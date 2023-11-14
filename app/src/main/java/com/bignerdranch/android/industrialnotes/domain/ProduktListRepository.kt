@@ -1,4 +1,4 @@
-package com.bignerdranch.android.myapplicationoncleanarchitecture.domain
+package com.bignerdranch.android.industrialnotes.domain
 
 import androidx.lifecycle.LiveData
 import java.util.*
@@ -8,5 +8,5 @@ interface ProduktListRepository {
     suspend fun deleteProduktItem (produktItem: ProduktItem)
     suspend fun editProduktItem(produktItem: ProduktItem)
     suspend fun getProduktItem(shopItemId: UUID): ProduktItem
-    fun getProduktList(): LiveData<List<Produkt>>
+    fun getProduktList(): LiveData<List<ProduktItem>>
 }

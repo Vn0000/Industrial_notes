@@ -14,10 +14,10 @@ interface ProduktListDao {
     fun getProduktList(): LiveData<List<ProduktItemDbModel>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addSProduktItem(shopItemDbModel: ProduktItemDbModel)
+    suspend fun addSProduktItem(produktItemDbModel: ProduktItemDbModel)
 
     @Query("DELETE FROM produkt_items WHERE id=:produktItemId")
-    suspend fun deleteProduktItem(shopItemId: UUID)
+    suspend fun deleteProduktItem(produktItemId: UUID)
 
     @Query("SELECT * FROM produkt_items WHERE id=:produktItemId LIMIT 1")
     suspend fun getProduktItem(produktItemId: UUID): ProduktItemDbModel

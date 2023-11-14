@@ -1,4 +1,5 @@
-import com.bignerdranch.android.myapplicationoncleanarchitecture.domain.ProduktListRepository
+import com.bignerdranch.android.industrialnotes.domain.ProduktItem
+import com.bignerdranch.android.industrialnotes.domain.ProduktListRepository
 
 
 class EditProduktItemUseCase (private val produktListRepository: ProduktListRepository) {

@@ -1,11 +1,12 @@
-package com.bignerdranch.android.myapplicationoncleanarchitecture.domain
+package com.bignerdranch.android.industrialnotes.domain
 
 import java.util.*
 
 data class ProduktItem (
     val name: String,
-    val count: Int,
-    var enabled: Boolean,
+    val concentration: Int,
+    val dosage: Int,
+    val description: Int,
     val id: UUID = UUID.randomUUID()
 ) {
 }

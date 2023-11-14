@@ -1,6 +1,6 @@
 package com.bignerdranch.android.industrialnotes.data
 
-import com.bignerdranch.android.myapplicationoncleanarchitecture.domain.ProduktItem
+import com.bignerdranch.android.industrialnotes.domain.ProduktItem
 
 
 class ProduktListMapper {
@@ -8,15 +8,17 @@ class ProduktListMapper {
     fun mapEntityToDbModel(produktItem: ProduktItem) = ProduktItemDbModel(
         id = produktItem.id,
         name = produktItem.name,
-        count = produktItem.count,
-        enabled = produktItem.enabled
+        concentration = produktItem.concentration,
+        description = produktItem.description,
+        dosage = produktItem.dosage
     )
 
     fun mapDbModelToEntity(produkItemDbModel: ProduktItemDbModel) = ProduktItem(
         id = produkItemDbModel.id,
         name = produkItemDbModel.name,
-        count = produkItemDbModel.count,
-        enabled = produkItemDbModel.enabled
+        concentration = produkItemDbModel.concentration,
+        description = produkItemDbModel.description,
+        dosage = produkItemDbModel.dosage
     )
 
     fun mapListDbModelToListEntity(list: List<ProduktItemDbModel>) = list.map {

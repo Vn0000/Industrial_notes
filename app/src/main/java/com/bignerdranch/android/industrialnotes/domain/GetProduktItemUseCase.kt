@@ -1,7 +1,5 @@
-
-
-import com.bignerdranch.android.myapplicationoncleanarchitecture.domain.ProduktItem
-import com.bignerdranch.android.myapplicationoncleanarchitecture.domain.ProduktListRepository
+import com.bignerdranch.android.industrialnotes.domain.ProduktItem
+import com.bignerdranch.android.industrialnotes.domain.ProduktListRepository
 import java.util.UUID
 
 class GetProduktItemUseCase (private val produktListRepository: ProduktListRepository)  {
