@@ -4,17 +4,17 @@ import android.app.Application
 import androidx.room.*
 import java.util.*
 
-@Database(entities = [ProduktItemDbModel::class], version = 1, exportSchema = false)
+@Database(entities = [ProductItemDbModel::class], version = 1, exportSchema = false)
 @TypeConverters(AppTypeConverters::class)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun produktListDao(): ProduktListDao
+    abstract fun productListDao(): ProductListDao
 
     companion object {
 
         private var INSTANCE: AppDatabase? = null
         private val LOCK = Any()
-        private const val DB_NAME = "produkt_item.db"
+        private const val DB_NAME = "product_item.db"
 
         fun getInstance(application: Application): AppDatabase {
             INSTANCE?.let {
