@@ -6,7 +6,7 @@
     app:startDestination="@id/autorizationFragment">
     <fragment
         android:id="@+id/autorizationFragment"
-        android:name="com.bignerdranch.android.industrialnotes.presentation.AutorizationFragment"
+        android:name="com.bignerdranch.android.industrialnotes.presentation.autorization.AutorizationFragment"
         android:label="AutorizationFragment" >
         <action
             android:id="@+id/action_autorizationFragment_to_listProductFragment"
@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/listProductFragment"
-        android:name="com.bignerdranch.android.industrialnotes.presentation.ListProductFragment"
+        android:name="com.bignerdranch.android.industrialnotes.presentation.listproduct.ListProductFragment"
         android:label="fragment_list_product"
         tools:layout="@layout/fragment_list_product" >
         <action
@@ -23,6 +23,6 @@
     </fragment>
     <fragment
         android:id="@+id/itemProductFragment"
-        android:name="com.bignerdranch.android.industrialnotes.precsentation.ItemProductFragment"
+        android:name="com.bignerdranch.android.industrialnotes.presentation.productitem.ItemProductFragment"
         android:label="ItemProductFragment" />
 </navigation>

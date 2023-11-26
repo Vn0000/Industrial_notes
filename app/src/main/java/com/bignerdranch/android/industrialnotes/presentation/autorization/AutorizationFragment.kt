@@ -1,4 +1,4 @@
-package com.bignerdranch.android.industrialnotes.presentation
+package com.bignerdranch.android.industrialnotes.presentation.autorization
 
 import android.os.Bundle
 import android.view.LayoutInflater

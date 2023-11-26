@@ -8,7 +8,7 @@ import java.util.UUID
 data class ProductItemDbModel(
     @PrimaryKey val id: UUID = UUID.randomUUID(),
     val name: String,
-    val concentration: Int,
-    val dosage: Int,
+    val concentration: String,
+    val dosage: String,
     val description: String
 )

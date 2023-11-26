@@ -1,15 +1,19 @@
-package com.bignerdranch.android.industrialnotes.presentation
+package com.bignerdranch.android.industrialnotes.presentation.listproduct
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bignerdranch.android.industrialnotes.R
 import com.bignerdranch.android.industrialnotes.databinding.FragmentListProductBinding
 
 class ListProductFragment : Fragment() {
+
+    private lateinit var viewModel: ProductListViewModel
 
     private var _binding: FragmentListProductBinding? = null
     private val binding: FragmentListProductBinding
@@ -26,14 +30,21 @@ class ListProductFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel = ViewModelProvider(this)[ProductListViewModel::class.java]
+        viewModel.getProductList()
+        Log.d("TestBD", viewModel.getProductList().toString())
+
         binding.buttonAddProductItem.setOnClickListener {
             launchFragmentProductItem()
         }
-    }
 
+    }
     private fun launchFragmentProductItem() {
         findNavController().navigate(
             R.id.action_listProductFragment_to_itemProductFragment
         )
     }
+
+
 }

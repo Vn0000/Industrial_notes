@@ -2,10 +2,10 @@ package com.bignerdranch.android.industrialnotes.domain
 
 import java.util.*
 
-data class ProduсtItem (
+data class ProductItem (
     val name: String,
-    val concentration: Int,
-    val dosage: Int,
+    val concentration: String,
+    val dosage: String,
     val description: String,
     val id: UUID = UUID.randomUUID()
 ) {

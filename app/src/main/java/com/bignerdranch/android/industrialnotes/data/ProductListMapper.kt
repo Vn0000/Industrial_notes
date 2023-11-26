@@ -1,19 +1,19 @@
 package com.bignerdranch.android.industrialnotes.data
 
-import com.bignerdranch.android.industrialnotes.domain.ProduсtItem
+import com.bignerdranch.android.industrialnotes.domain.ProductItem
 
 
 class ProductListMapper {
 
-    fun mapEntityToDbModel(produсtItem: ProduсtItem) = ProductItemDbModel(
-        id = produсtItem.id,
-        name = produсtItem.name,
-        concentration = produсtItem.concentration,
-        description = produсtItem.description,
-        dosage = produсtItem.dosage
+    fun mapEntityToDbModel(productItem: ProductItem) = ProductItemDbModel(
+        id = productItem.id,
+        name = productItem.name,
+        concentration = productItem.concentration,
+        description = productItem.description,
+        dosage = productItem.dosage
     )
 
-    fun mapDbModelToEntity(producItemDbModel: ProductItemDbModel) = ProduсtItem(
+    fun mapDbModelToEntity(producItemDbModel: ProductItemDbModel) = ProductItem(
         id = producItemDbModel.id,
         name = producItemDbModel.name,
         concentration = producItemDbModel.concentration,
