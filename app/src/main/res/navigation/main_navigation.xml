@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/authorizationFragment">
-
+    app:startDestination="@id/autorizationFragment">
     <fragment
-        android:id="@+id/authorizationFragment"
-        android:name="com.bignerdranch.android.industrialnotes.presentation.AuthorizationFragment"
-        android:label="AuthorizationFragment" />
+        android:id="@+id/autorizationFragment"
+        android:name="com.bignerdranch.android.industrialnotes.presentation.autorization.AutorizationFragment"
+        android:label="AutorizationFragment" >
+        <action
+            android:id="@+id/action_autorizationFragment_to_listProductFragment"
+            app:destination="@id/listProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listProductFragment"
+        android:name="com.bignerdranch.android.industrialnotes.presentation.listproduct.ListProductFragment"
+        android:label="fragment_list_product"
+        tools:layout="@layout/fragment_list_product" >
+        <action
+            android:id="@+id/action_listProductFragment_to_itemProductFragment"
+            app:destination="@id/itemProductFragment"
+            app:popUpTo="@id/itemProductFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemProductFragment"
+        android:name="com.bignerdranch.android.industrialnotes.presentation.productitem.ItemProductFragment"
+        android:label="ItemProductFragment" />
 </navigation>
