@@ -14,11 +14,11 @@ class ProductListMapper {
     )
 
     fun mapDbModelToEntity(producItemDbModel: ProductItemDbModel) = ProductItem(
-        id = producItemDbModel.id,
         name = producItemDbModel.name,
         concentration = producItemDbModel.concentration,
-        description = producItemDbModel.description,
-        dosage = producItemDbModel.dosage
+        dosage = producItemDbModel.dosage,
+        id = producItemDbModel.id,
+        description = producItemDbModel.description
     )
 
     fun mapListDbModelToListEntity(list: List<ProductItemDbModel>) = list.map {

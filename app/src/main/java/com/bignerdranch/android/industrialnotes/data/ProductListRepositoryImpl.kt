@@ -9,14 +9,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.*
 
-class ProductRepositoryImpl(
+class ProductListRepositoryImpl(
     application: Application
 ) : ProductListRepository {
 
     private val coroutine = Dispatchers.IO
 
     private val productListDao = AppDatabase.getInstance(application).productListDao()
-    val mapper = ProductListMapper()
+    private val mapper = ProductListMapper()
     override suspend fun addProductItem(productItem: ProductItem) = withContext(coroutine) {
         productListDao.addSProductItem(mapper.mapEntityToDbModel(productItem))
     }

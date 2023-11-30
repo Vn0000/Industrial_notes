@@ -8,21 +8,21 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.bignerdranch.android.industrialnotes.domain.ProductItem
-import com.bignerdranch.android.industrialnotes.data.ProductRepositoryImpl
+import com.bignerdranch.android.industrialnotes.data.ProductListRepositoryImpl
 import kotlinx.coroutines.launch
 
 
 class ProductListViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val repository = ProductRepositoryImpl(application)
+    private val repository = ProductListRepositoryImpl(application)
 
     private val getProductListUseCase = GetProductListUseCase(repository)
     private val deleteProductItemUseCase = DeleteProductItemUseCase(repository)
     private val editProductItemUseCase = EditProductItemUseCase(repository)
 
-    fun getProductList(): LiveData<List<ProductItem>> {
-        return getProductListUseCase.getProductList()
-    }
+    val productList = getProductListUseCase.getProductList()
+
+
 
     fun deleteProductItem(productItem: ProductItem) {
         viewModelScope.launch { deleteProductItemUseCase.deleteProductItem(productItem) }

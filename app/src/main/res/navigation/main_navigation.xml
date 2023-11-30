@@ -19,7 +19,9 @@
         tools:layout="@layout/fragment_list_product" >
         <action
             android:id="@+id/action_listProductFragment_to_itemProductFragment"
-            app:destination="@id/itemProductFragment" />
+            app:destination="@id/itemProductFragment"
+            app:popUpTo="@id/itemProductFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/itemProductFragment"

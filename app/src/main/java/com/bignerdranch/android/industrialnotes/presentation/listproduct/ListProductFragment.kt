@@ -8,12 +8,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.industrialnotes.R
 import com.bignerdranch.android.industrialnotes.databinding.FragmentListProductBinding
 
 class ListProductFragment : Fragment() {
 
     private lateinit var viewModel: ProductListViewModel
+    private lateinit var  productListAdapter: ProductListAdapter
 
     private var _binding: FragmentListProductBinding? = null
     private val binding: FragmentListProductBinding
@@ -30,15 +33,47 @@ class ListProductFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        setupRecyclerView()
         viewModel = ViewModelProvider(this)[ProductListViewModel::class.java]
-        viewModel.getProductList()
-        Log.d("TestBD", viewModel.getProductList().toString())
+        viewModel.productList.observe(this){
+            productListAdapter.submitList(it)
+        }
 
         binding.buttonAddProductItem.setOnClickListener {
             launchFragmentProductItem()
         }
 
+    }
+
+    private fun setupRecyclerView() {
+        with(binding.rvProductList) {
+            productListAdapter = ProductListAdapter()
+            adapter = productListAdapter
+        }
+        setupSwipeListener(binding.rvProductList)
+    }
+
+    private fun  setupSwipeListener(rvProductList: RecyclerView) {
+        val callback = object : ItemTouchHelper.SimpleCallback(
+            0,
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+        ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val item = productListAdapter.currentList[viewHolder.adapterPosition]
+                viewModel.deleteProductItem(item)
+            }
+
+        }
+        val itemTouchHelper = ItemTouchHelper(callback)
+        itemTouchHelper.attachToRecyclerView(rvProductList)
     }
     private fun launchFragmentProductItem() {
         findNavController().navigate(
