@@ -49,23 +49,36 @@
         android:textColor="@color/black"
         android:textSize="24dp"
         android:textStyle="bold" />
-
-    <androidx.recyclerview.widget.RecyclerView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="@integer/material_motion_duration_long_1"
-        tools:listitem="@layout/distinctive_feature" />
+        android:layout_height="400dp">
+        <EditText
+            android:id="@+id/tv_distinctive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="@string/test_text"
+            android:layout_gravity="top"
+            android:gravity="top"/>
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/rv_distinctive"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="430dp"-->
+<!--            tools:listitem="@layout/distinctive_feature" />-->
+    </ScrollView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/button_add_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:contentDescription="Add new point"
-        android:elevation="8dp"
-        android:focusable="true"
-        android:src="@android:drawable/ic_input_add"
-        app:backgroundTint="#FFEB3B" />
+
+
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/button_add_distinctive"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:clickable="true"-->
+<!--        android:contentDescription="Add new distinctive point"-->
+<!--        android:elevation="8dp"-->
+<!--        android:focusable="true"-->
+<!--        android:src="@android:drawable/ic_input_add"-->
+<!--        app:backgroundTint="#FFEB3B" />-->
 
     <LinearLayout
         android:layout_width="match_parent"

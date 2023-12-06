@@ -54,7 +54,7 @@ class ItemProductFragment : Fragment() {
                 binding.tvProdictName.text?.toString(),
                 binding.tvConcentration.text?.toString(),
                 binding.tvDosage.text?.toString(),
-                "затычка"
+                binding.tvDistinctive.text?.toString()
             )
             findNavController().popBackStack()
         }

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.industrialnotes.R
 import com.bignerdranch.android.industrialnotes.databinding.FragmentListProductBinding
+import com.bignerdranch.android.industrialnotes.domain.ProductItem
 
 class ListProductFragment : Fragment() {
 
@@ -49,6 +50,9 @@ class ListProductFragment : Fragment() {
         with(binding.rvProductList) {
             productListAdapter = ProductListAdapter()
             adapter = productListAdapter
+            productListAdapter.onProductItemClickListener = {
+                launchWatchItemFragment(it)
+            }
         }
         setupSwipeListener(binding.rvProductList)
     }
@@ -78,6 +82,12 @@ class ListProductFragment : Fragment() {
     private fun launchFragmentProductItem() {
         findNavController().navigate(
             R.id.action_listProductFragment_to_itemProductFragment
+        )
+    }
+
+    private fun launchWatchItemFragment(productItem: ProductItem) {
+        findNavController().navigate(
+            ListProductFragmentDirections.actionListProductFragmentToWatchOnlyProductItemFragment(productItem)
         )
     }
 
