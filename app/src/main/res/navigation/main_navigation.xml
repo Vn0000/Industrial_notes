@@ -22,9 +22,29 @@
             app:destination="@id/itemProductFragment"
             app:popUpTo="@id/itemProductFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_listProductFragment_to_watchOnlyProductItemFragment"
+            app:destination="@id/watchOnlyProductItemFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemProductFragment"
         android:name="com.bignerdranch.android.industrialnotes.presentation.productitem.ItemProductFragment"
-        android:label="ItemProductFragment" />
+        android:label="ItemProductFragment" >
+        <argument
+            android:name="argsState"
+            app:argType="com.bignerdranch.android.industrialnotes.presentation.model.ProductItemState" />
+        <argument
+            android:name="argsId"
+            app:argType="java.util.UUID"
+            app:nullable="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/watchOnlyProductItemFragment"
+        android:name="com.bignerdranch.android.industrialnotes.presentation.productitem.WatchOnlyProductItemFragment"
+        android:label="WatchOnlyProductItemFragment">
+        <argument
+            android:name="args"
+            app:argType="com.bignerdranch.android.industrialnotes.domain.ProductItem" />
+    </fragment>
 </navigation>

@@ -28,7 +28,7 @@ class ProductListAdapter :
         )
     }
 
-    inner class ProductItemViewHolder(binding: ItemProductBinding) :
+    inner class ProductItemViewHolder(private val binding: ItemProductBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         private lateinit var productItem: ProductItem
@@ -41,6 +41,13 @@ class ProductListAdapter :
             tvProductName.text = this.productItem.name
             tvProductConcentration.text = this.productItem.concentration
             tvProductDosage.text = this.productItem.dosage
+            binding.root.setOnClickListener {
+                onProductItemClickListener?.invoke(productItem)
+            }
+            binding.root.setOnLongClickListener {
+                onProductItemLongClickListener?.invoke(productItem)
+                true
+            }
         }
     }
 }

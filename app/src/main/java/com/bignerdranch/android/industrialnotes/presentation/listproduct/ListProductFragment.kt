@@ -1,7 +1,6 @@
 package com.bignerdranch.android.industrialnotes.presentation.listproduct
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,13 +9,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.bignerdranch.android.industrialnotes.R
 import com.bignerdranch.android.industrialnotes.databinding.FragmentListProductBinding
+import com.bignerdranch.android.industrialnotes.domain.ProductItem
+import com.bignerdranch.android.industrialnotes.presentation.model.ProductItemState
+import java.util.*
 
 class ListProductFragment : Fragment() {
 
+
     private lateinit var viewModel: ProductListViewModel
-    private lateinit var  productListAdapter: ProductListAdapter
+    private lateinit var productListAdapter: ProductListAdapter
 
     private var _binding: FragmentListProductBinding? = null
     private val binding: FragmentListProductBinding
@@ -35,12 +37,12 @@ class ListProductFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         viewModel = ViewModelProvider(this)[ProductListViewModel::class.java]
-        viewModel.productList.observe(this){
+        viewModel.productList.observe(this) {
             productListAdapter.submitList(it)
         }
 
         binding.buttonAddProductItem.setOnClickListener {
-            launchFragmentProductItem()
+            launchFragmentProductItem(ProductItemState.ADD_MODE, null)
         }
 
     }
@@ -49,11 +51,17 @@ class ListProductFragment : Fragment() {
         with(binding.rvProductList) {
             productListAdapter = ProductListAdapter()
             adapter = productListAdapter
+            productListAdapter.onProductItemClickListener = {
+                launchWatchItemFragment(it)
+            }
+            productListAdapter.onProductItemLongClickListener = {
+                launchFragmentProductItem(ProductItemState.EDIT_MODE, it.id)
+            }
         }
         setupSwipeListener(binding.rvProductList)
     }
 
-    private fun  setupSwipeListener(rvProductList: RecyclerView) {
+    private fun setupSwipeListener(rvProductList: RecyclerView) {
         val callback = object : ItemTouchHelper.SimpleCallback(
             0,
             ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
@@ -75,11 +83,21 @@ class ListProductFragment : Fragment() {
         val itemTouchHelper = ItemTouchHelper(callback)
         itemTouchHelper.attachToRecyclerView(rvProductList)
     }
-    private fun launchFragmentProductItem() {
+
+    private fun launchFragmentProductItem(state: ProductItemState, productItemId: UUID?) {
         findNavController().navigate(
-            R.id.action_listProductFragment_to_itemProductFragment
+            ListProductFragmentDirections.actionListProductFragmentToItemProductFragment(
+                state,
+                productItemId
+            )
         )
     }
 
-
+    private fun launchWatchItemFragment(productItem: ProductItem) {
+        findNavController().navigate(
+            ListProductFragmentDirections.actionListProductFragmentToWatchOnlyProductItemFragment(
+                productItem
+            )
+        )
+    }
 }
