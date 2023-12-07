@@ -44,6 +44,10 @@ class ProductListAdapter :
             binding.root.setOnClickListener {
                 onProductItemClickListener?.invoke(productItem)
             }
+            binding.root.setOnLongClickListener {
+                onProductItemLongClickListener?.invoke(productItem)
+                true
+            }
         }
     }
 }
